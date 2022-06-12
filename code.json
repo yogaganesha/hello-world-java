@@ -1,0 +1,625 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/Sqli",
+              "name": "Sqli",
+              "shortDescription": {
+                "text": "SQL Injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nIn an SQL injection attack, the user can submit an SQL query directly to the database, gaining access without providing appropriate credentials. Attackers can then view, export, modify, and delete confidential information; change passwords and other authentication information; and possibly gain access to other systems within the network. This is one of the most commonly exploited categories of vulnerability, but can largely be avoided through good coding practices.\n\n### Best practices for prevention\n* Avoid passing user-entered parameters directly to the SQL server.\n* When coding, define SQL code first, then pass in parameters. Use prepared statements with parameterized queries. Examples include `SqlCommand()` in .NET and `bindParam()` in PHP.\n* Use strong typing for all parameters so unexpected user data will be rejected.\n* Where direct user input cannot be avoided for performance reasons, validate input against a very strict allowlist of permitted characters, avoiding special characters such as `? & / < > ; -` and spaces. Use a vendor-supplied escaping routine if possible.\n* Develop your application in an environment and/or using libraries that provide protection against SQL injection.\n* Harden your entire environment around a least-privilege model, ideally with isolated accounts with privileges only for particular tasks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java",
+                  "maintenance",
+                  "bug",
+                  "table",
+                  "query",
+                  "database"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/BjoernKW/ZenQuery/commit/228bf9a728f7d85f5a1fea0cc9c896db3d8eb0e8?diff=split#diff-3fd2c91261df4fcc03ccb7e8c2fb4acaL44",
+                    "lines": [
+                      {
+                        "line": "@RequestMapping(value = \"/{key}/{version}\", method = RequestMethod.GET, produces = { \"application/xml\", \"application/json\" })",
+                        "lineNumber": 40,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "@RequestMapping(value = \"/{id}/{version}\", method = RequestMethod.GET, produces = { \"application/xml\", \"application/json\" })",
+                        "lineNumber": 78,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public @ResponseBody",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  List<Map<String, Object>> query(",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "          @PathVariable String key,",
+                        "lineNumber": 43,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  List<Map<String, Object>> queryByVersion(",
+                        "lineNumber": 80,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "          @PathVariable Integer id,",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "          @PathVariable Integer version",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ) {",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      Query query = queryDAO.findByKey(key);",
+                        "lineNumber": 46,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      Query query = queryDAO.find(id);",
+                        "lineNumber": 84,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      QueryVersion queryVersion = queryVersionDAO.findByQueryIdAndVersion(query.getId(), version);",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      Pattern pattern = Pattern.compile(\"jdbc:(\\\\w+?):\");",
+                        "lineNumber": 88,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    dataSource.setValidationQuery(\"SELECT 1\");",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);",
+                        "lineNumber": 106,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    rows = jdbcTemplate.queryForList(queryVersion.getContent());",
+                        "lineNumber": 107,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} catch (Exception e) {",
+                        "lineNumber": 108,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    logger.debug(e);",
+                        "lineNumber": 109,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/pveierland/aix-weather-widget/commit/846897ebc7de034c0d96f7af5dc0723674e4ebcd?diff=split#diff-1e8b7d7863a1b28898ffcf1b5e79b995L131",
+                    "lines": [
+                      {
+                        "line": "private void updateWhatever(Uri widgetUri) {",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ContentResolver resolver = getApplicationContext().getContentResolver();",
+                        "lineNumber": 147,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "long utcTime = Calendar.getInstance(TimeZone.getTimeZone(\"UTC\")).getTimeInMillis();",
+                        "lineNumber": 151,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "int widgetSize = -1;",
+                        "lineNumber": 166,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cursor widgetCursor = resolver.query(widgetUri, null, null, null, null);",
+                        "lineNumber": 168,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (widgetCursor != null) {",
+                        "lineNumber": 169,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (widgetCursor.moveToFirst()) {",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    widgetSize = widgetCursor.getInt(AixWidgetsColumns.SIZE_COLUMN);",
+                        "lineNumber": 171,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    widgetViews = widgetCursor.getString(AixWidgetsColumns.VIEWS_COLUMN);",
+                        "lineNumber": 172,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    widgetFound = true;",
+                        "lineNumber": 173,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 174,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Log.d(TAG, \"Error: Could not find widget in database. uri=\" + widgetUri);",
+                        "lineNumber": 186,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 187,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  viewUri = ContentUris.withAppendedId(AixViews.CONTENT_URI, Long.parseLong(widgetViews));",
+                        "lineNumber": 169,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "//}",
+                        "lineNumber": 198,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "long viewId = Long.parseLong(widgetViews);",
+                        "lineNumber": 200,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "viewUri = ContentUris.withAppendedId(AixViews.CONTENT_URI, viewId);",
+                        "lineNumber": 201,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Cursor locationCursor = resolver.query(",
+                        "lineNumber": 203,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Uri.withAppendedPath(viewUri, AixViews.TWIG_LOCATION),",
+                        "lineNumber": 204,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    null, null, null, null);",
+                        "lineNumber": 205,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/derby/commit/552e94e0649d929d809ecafb9835109340ddbec6?diff=split#diff-4896157029b5e2af0105d7c1614ade08L196",
+                    "lines": [
+                      {
+                        "line": "    new String[] {\"TABLE\"});",
+                        "lineNumber": 197,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "dropUsingDMD(s, rs, schema, \"TABLE_NAME\", \"TABLE\");",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // Synonyms - need work around for DERBY-1790 where",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 230,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private static void dropUsingDMD(",
+                        "lineNumber": 231,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Statement s, ResultSet rs, String schema,",
+                        "lineNumber": 232,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String mdColumn,",
+                        "lineNumber": 233,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String dropType) throws SQLException",
+                        "lineNumber": 234,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 235,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String dropLeadIn = \"DROP \" + dropType + \" \";",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 237,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  s.clearBatch();",
+                        "lineNumber": 234,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  int batchCount = 0;",
+                        "lineNumber": 235,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      // First collect the set of DROP SQL statements.",
+                        "lineNumber": 238,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      ArrayList ddl = new ArrayList();",
+                        "lineNumber": 239,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  while (rs.next())",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  {",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "          String objectName = rs.getString(mdColumn);",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    s.addBatch(dropLeadIn + JDBC.escape(schema, objectName));",
+                        "lineNumber": 239,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    batchCount++;",
+                        "lineNumber": 240,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "          ddl.add(dropLeadIn + JDBC.escape(schema, objectName));",
+                        "lineNumber": 243,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\trs.close();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Object sql = i.next();",
+                        "lineNumber": 252,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (sql != null) {",
+                        "lineNumber": 253,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    s.addBatch(sql.toString());",
+                        "lineNumber": 254,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    batchCount++;",
+                        "lineNumber": 255,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 256,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "- Support hive user impersonation on hive tables page",
+                  "Previous store API gave us get/query and put/insert methods.",
+                  "Obsolete cache files will be removed at the\nsame time as the database entries."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 119,
+                "cwe": [
+                  "CWE-89"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/Sqli",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into executeQuery, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[executeQuery](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 89,
+                  "endLine": 89,
+                  "startColumn": 44,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8a9c53d330ef6ecac71cc53a08f8d6e146eabc2f062e13d56298dc0b2faa7534",
+            "1": "19689298.6f391d93.62790746.54c21ee1.e10dfb9b.2f4e1548.e7a45c0d.77438af7.f6e0d636.6f391d93.14535f1c.e22980a8.f0e1baa5.95df3f17.e7a45c0d.77438af7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 25,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 25,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 10,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "endLine": 76,
+                            "startColumn": 18,
+                            "endColumn": 86
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "endLine": 76,
+                            "startColumn": 18,
+                            "endColumn": 92
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "endLine": 76,
+                            "startColumn": 10,
+                            "endColumn": 92
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 89,
+                            "endLine": 89,
+                            "startColumn": 57,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/com/javacodegeeks/example/HelloWorldApplication.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 89,
+                            "endLine": 89,
+                            "startColumn": 44,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 834,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 2,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 2,
+            "isSupported": true,
+            "lang": "HTML+ERB"
+          },
+          {
+            "files": 3,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

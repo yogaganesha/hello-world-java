@@ -1,0 +1,3 @@
+FROM openjdk:11
+
+ENTRYPOINT [ "java", "-jar", "/opt/SpringBootServer-1.0.0.war" ]
