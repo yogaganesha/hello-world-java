@@ -165,12 +165,6 @@
 								"definition": "test",
 								"command": "echo \"test\"",
 								"properties": null
-							},
-							{
-								"name": "test1",
-								"definition": "test1",
-								"command": "echo \"test1\"",
-								"properties": null
 							}
 						],
 						"docker_options": {}
@@ -256,6 +250,20 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
+				"tasks": [
+					{
+						"name": "test",
+						"steps": [
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "echo \"prod test\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"deployment_target": 1,
 				"releases": [
 					{
