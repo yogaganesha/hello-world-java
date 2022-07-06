@@ -252,7 +252,15 @@
 				"cache_info": {},
 				"tasks": [
 					{
-						"name": "simple-hello-world-java"
+						"name": "simple-hello-world-java",
+						"steps": [
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "echo \"nothing to test\"",
+								"properties": null
+							}
+						]
 					}
 				],
 				"deployment_target": 1,
