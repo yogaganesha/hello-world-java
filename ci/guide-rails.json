@@ -165,6 +165,12 @@
 								"definition": "test",
 								"command": "echo \"test\"",
 								"properties": null
+							},
+							{
+								"name": "test1",
+								"definition": "test1",
+								"command": "echo \"test1\"",
+								"properties": null
 							}
 						],
 						"docker_options": {}
@@ -250,19 +256,6 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
-				"tasks": [
-					{
-						"name": "simple-hello-world-java",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"nothing to test\"",
-								"properties": null
-							}
-						]
-					}
-				],
 				"deployment_target": 1,
 				"releases": [
 					{
