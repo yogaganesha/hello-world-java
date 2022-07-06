@@ -156,6 +156,20 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
+				"tasks": [
+					{
+						"name": "testing",
+						"steps": [
+							{
+								"name": "testing",
+								"definition": "testing",
+								"command": "echo \"nothing to test\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"deployment_target": 1,
 				"releases": [
 					{
