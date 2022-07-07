@@ -98,18 +98,6 @@
 							}
 						],
 						"docker_options": {}
-					},
-					{
-						"name": "paralleltask",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"test\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
 					}
 				]
 			},
@@ -168,6 +156,20 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
+				"tasks": [
+					{
+						"name": "test",
+						"steps": [
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "echo \"test\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"deployment_target": 1,
 				"releases": [
 					{
@@ -248,26 +250,6 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
-				"tasks": [
-					{
-						"name": "test",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"prod test\"",
-								"properties": null
-							},
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"prod test\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
-					}
-				],
 				"deployment_target": 1,
 				"releases": [
 					{
