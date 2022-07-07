@@ -162,7 +162,20 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
-				"tasks": [],
+				"tasks": [
+					{
+						"name": "test",
+						"steps": [
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "echo \"test iso\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"deployment_target": 1,
 				"releases": [
 					{
@@ -243,20 +256,7 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
-				"tasks": [
-					{
-						"name": "test",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"test prod\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
-					}
-				],
+				"tasks": [],
 				"deployment_target": 1,
 				"releases": [
 					{
