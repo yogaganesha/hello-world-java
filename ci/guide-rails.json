@@ -35,14 +35,16 @@
 							"repository": "((application.name))",
 							"tags": [
 								"((application.version))"
-							]
+							],
+							"context": "."
 						},
 						{
 							"repository": "((application.name))-java",
 							"dockerFilePath": "DockerJava",
 							"tags": [
 								"((application.version))"
-							]
+							],
+							"context": "."
 						}
 					]
 				},
@@ -92,12 +94,6 @@
 						"steps": [
 							{
 								"name": "print env",
-								"definition": "print env",
-								"command": "env | sort",
-								"properties": null
-							},
-							{
-								"name": "another env",
 								"definition": "print env",
 								"command": "env | sort",
 								"properties": null
@@ -162,20 +158,6 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
-				"tasks": [
-					{
-						"name": "test",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"test iso\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
-					}
-				],
 				"deployment_target": 1,
 				"releases": [
 					{
@@ -255,8 +237,27 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
+				"tasks": [
+					{
+						"name": "prod-test",
+						"steps": [
+							{
+								"name": "prod-test",
+								"definition": "prod-test",
+								"command": "echo \"test\"",
+								"properties": null
+							},
+							{
+								"name": "test-2",
+								"definition": "test-2",
+								"command": "echo \"test-2\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"cache_info": {},
-				"tasks": [],
 				"deployment_target": 1,
 				"releases": [
 					{
