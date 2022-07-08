@@ -97,12 +97,6 @@
 								"definition": "print env",
 								"command": "env | sort",
 								"properties": null
-							},
-							{
-								"name": "env",
-								"definition": "env",
-								"command": "env",
-								"properties": null
 							}
 						],
 						"docker_options": {}
@@ -125,6 +119,13 @@
 						"delete_instances": true
 					}
 				},
+				"properties": [
+					{
+						"name": "foo",
+						"value": "bar",
+						"type": "string"
+					}
+				],
 				"deployment_strategy": {
 					"canaries": 1,
 					"max_in_flight": 1,
@@ -164,20 +165,6 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
-				"tasks": [
-					{
-						"name": "test",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"test\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
-					}
-				],
 				"deployment_target": 1,
 				"releases": [
 					{
@@ -258,6 +245,20 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
+				"tasks": [
+					{
+						"name": "test",
+						"steps": [
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "echo \"test\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"deployment_target": 1,
 				"releases": [
 					{
