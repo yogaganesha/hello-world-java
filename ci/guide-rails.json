@@ -97,12 +97,6 @@
 								"definition": "print env",
 								"command": "env | sort",
 								"properties": null
-							},
-							{
-								"name": "print",
-								"definition": "print",
-								"command": "env",
-								"properties": null
 							}
 						],
 						"docker_options": {}
@@ -164,20 +158,6 @@
 				"post_deployment_actions": {
 					"loadbalancer": {}
 				},
-				"tasks": [
-					{
-						"name": "iso-test",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"test\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
-					}
-				],
 				"deployment_target": 1,
 				"releases": [
 					{
@@ -258,6 +238,20 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
+				"tasks": [
+					{
+						"name": "test",
+						"steps": [
+							{
+								"name": "echo",
+								"definition": "echo",
+								"command": "echo \"test\"",
+								"properties": null
+							}
+						],
+						"docker_options": {}
+					}
+				],
 				"deployment_target": 1,
 				"releases": [
 					{
