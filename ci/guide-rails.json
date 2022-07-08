@@ -167,6 +167,14 @@
 				"tasks": [
 					{
 						"name": "iso-test",
+						"steps": [
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "echo \"test\"",
+								"properties": null
+							}
+						],
 						"docker_options": {}
 					}
 				],
@@ -250,20 +258,6 @@
 					"loadbalancer": {}
 				},
 				"cache_info": {},
-				"tasks": [
-					{
-						"name": "test",
-						"steps": [
-							{
-								"name": "test",
-								"definition": "test",
-								"command": "echo \"test prod\"",
-								"properties": null
-							}
-						],
-						"docker_options": {}
-					}
-				],
 				"deployment_target": 1,
 				"releases": [
 					{
