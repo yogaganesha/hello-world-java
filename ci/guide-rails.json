@@ -290,7 +290,7 @@
 		"default_properties": [
 			{
 				"name": "gr.veracode.static.scan",
-				"value": "false",
+				"value": "true",
 				"type": "string"
 			},
 			{
@@ -301,6 +301,11 @@
 			{
 				"name": "source_dirs",
 				"value": "./",
+				"type": "string"
+			},
+			{
+				"name": "test2",
+				"value": "test",
 				"type": "string"
 			}
 		],
