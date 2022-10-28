@@ -15,6 +15,7 @@ public class HelloWorldApplication {
 		boolean test;
 		test = false;
 		String password;
+		String failedme
 		password = "secret";
 
 		// duplicate the follwing bad code so we some duplication metrics
