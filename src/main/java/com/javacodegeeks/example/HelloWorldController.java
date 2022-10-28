@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 	String companyName = System.getenv("CUSTOMER_NAME");
 	String name1 = "testuser";
+	String name2 = "sample2";
 
 	@GetMapping("/hello")
 	public String sayHello() {
